@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chambre 2 - La Margottiere</title>
+  <meta name="description" content="Chambre 2, decoree dans des tons vert clair, avec entree privative sur la terrasse et la piscine.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="site-logo"><a href="index.html">La Margottiere<span class="logo-sub">Chambres d'Hotes en Provence</span></a></div>
+      <button class="menu-toggle" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="main-nav">
+        <ul>
+          <li class="has-dropdown">
+            <a href="#">Bienvenue</a>
+            <ul class="dropdown">
+              <li><a href="un-site-unique.html">Un site Unique</a></li>
+              <li><a href="la-piscine.html">La piscine</a></li>
+              <li><a href="reinventee.html">La Margottiere reinventee</a></li>
+            </ul>
+          </li>
+          <li class="has-dropdown">
+            <a href="les-chambres.html">Les Chambres</a>
+            <ul class="dropdown">
+              <li><a href="chambre-1.html">Chambre 1</a></li>
+              <li><a href="chambre-2.html">Chambre 2</a></li>
+              <li><a href="chambre-3.html">Chambre 3</a></li>
+              <li><a href="chambre-4.html">Chambre 4</a></li>
+              <li><a href="les-tarifs.html">Les tarifs</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="animaux.html">Nature &amp; Animaux</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="page-content">
+    <div class="container">
+      <div class="page-title fade-in">
+        <h1>Chambre 2</h1>
+      </div>
+
+      <!-- Slideshow -->
+      <div class="slideshow fade-in" id="slideshow">
+        <div class="slideshow-track" id="slideshow-track">
+          <img src="images/chambres/ch2/1.jpg" alt="Chambre 2 - Photo 1">
+          <img src="images/chambres/ch2/2.jpg" alt="Chambre 2 - Photo 2">
+          <img src="images/chambres/ch2/3.jpg" alt="Chambre 2 - Photo 3">
+          <img src="images/chambres/ch2/4.jpg" alt="Chambre 2 - Photo 4">
+          <img src="images/chambres/ch2/5.jpg" alt="Chambre 2 - Photo 5">
+          <img src="images/chambres/ch2/6.jpg" alt="Chambre 2 - Photo 6">
+          <img src="images/chambres/ch2/7.jpg" alt="Chambre 2 - Photo 7">
+          <img src="images/chambres/ch2/8.jpg" alt="Chambre 2 - Photo 8">
+        </div>
+        <button class="slideshow-btn slideshow-prev" onclick="slidePrev()" aria-label="Photo precedente">&#10094;</button>
+        <button class="slideshow-btn slideshow-next" onclick="slideNext()" aria-label="Photo suivante">&#10095;</button>
+      </div>
+      <div class="slideshow-counter"><span id="slide-current">1</span> / <span id="slide-total">8</span></div>
+      <div class="slideshow-thumbs"></div>
+
+      <div class="page-text fade-in">
+        <p>La chambre 2 a ete entierement decoree dans des tons vert clair. Elle dispose d'une entree privative donnant sur la terrasse et la piscine. Cette chambre est capable d'accueillir 2 personnes. Elle est dotee d'une salle de bain avec douche, un lavabo simple-vasque et toilettes separees. L'equipement de la chambre comprend egalement un lit Queen size a memoire de forme, une connexion wifi, une tele, une armoire et une bouilloire. Le petit dejeuner, sans supplement de prix, est servi en salle a manger, sur la terrasse ou dans le jardin.</p>
+        <p><em>Isa et Titi</em></p>
+      </div>
+
+      <div class="cta-wrapper fade-in">
+        <a href="tel:+33616925101" class="btn-cta">Reserver</a>
+      </div>
+
+      <!-- Chamber Navigation -->
+      <nav class="chamber-nav fade-in">
+        <a href="chambre-1.html">&larr; Chambre 1</a>
+        <a href="les-chambres.html" class="nav-all">Toutes les chambres</a>
+        <a href="chambre-3.html">Chambre 3 &rarr;</a>
+      </nav>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p><a href="mailto:contact@lamargottiererians.com">contact@lamargottiererians.com</a></p>
+        <p><a href="tel:+33616925101">+33(0)6 16 92 51 01</a></p>
+        <p><a href="https://www.facebook.com/LaMargottiere" target="_blank" rel="noopener">FaceBook @LaMargottiere</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Adresse</h4>
+        <p>La Margottiere<br>141 Chemin du Passet<br>83560 RIANS<br>FRANCE</p>
+        <a href="https://www.google.com/maps/search/?api=1&query=141+Chemin+du+Passet+83560+RIANS+France" target="_blank" rel="noopener" class="footer-map">Nous trouver sur Google Maps</a>
+      </div>
+      <div class="footer-col">
+        <h4>Chambres d'Hotes</h4>
+        <p><a href="les-chambres.html">Nos chambres</a></p>
+        <p><a href="les-tarifs.html">Les tarifs</a></p>
+        <p><a href="animaux.html">Nature &amp; Animaux</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 La Margottiere - Chambres d'Hotes en Provence</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
