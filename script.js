@@ -15,19 +15,8 @@
       mainNav.classList.toggle('open');
     });
 
-    // Handle dropdown expand on mobile
-    var dropdownParents = document.querySelectorAll('.main-nav > ul > li.has-dropdown');
-    dropdownParents.forEach(function(item) {
-      item.querySelector(':scope > a').addEventListener('click', function(e) {
-        if (window.innerWidth <= 768) {
-          e.preventDefault();
-          item.classList.toggle('expanded');
-        }
-      });
-    });
-
     // Close menu on link click (mobile)
-    var navLinks = mainNav.querySelectorAll('.dropdown a');
+    var navLinks = mainNav.querySelectorAll('a');
     navLinks.forEach(function(link) {
       link.addEventListener('click', function() {
         if (window.innerWidth <= 768) {
@@ -122,6 +111,7 @@
   function openLightbox(src) {
     if (!lightbox || !lightboxImg) return;
     lightboxImg.src = src;
+    lightbox.style.top = window.scrollY + 'px';
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
@@ -208,6 +198,41 @@
       current = (current - 1 + total) % total;
       update();
     };
+  }
+
+  /* ---- Animated Counters ---- */
+  var statNumbers = document.querySelectorAll('[data-target]');
+  if (statNumbers.length > 0 && 'IntersectionObserver' in window) {
+    var counterObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var el = entry.target;
+          var target = parseInt(el.getAttribute('data-target'), 10);
+          var duration = 2000;
+          var start = 0;
+          var startTime = null;
+
+          function animate(timestamp) {
+            if (!startTime) startTime = timestamp;
+            var progress = Math.min((timestamp - startTime) / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = Math.floor(eased * target);
+            if (progress < 1) {
+              requestAnimationFrame(animate);
+            } else {
+              el.textContent = target;
+            }
+          }
+
+          requestAnimationFrame(animate);
+          counterObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    statNumbers.forEach(function(el) {
+      counterObserver.observe(el);
+    });
   }
 
   /* ---- Scroll indicator click ---- */

@@ -7,7 +7,7 @@
   <meta name="description" content="La Margottière, chambres d'hôtes provençales dédiées à la nature et aux animaux, situées à Rians, Provence.">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="home">
 
   <!-- HEADER -->
   <header class="site-header">
@@ -20,37 +20,28 @@
       </button>
       <nav class="main-nav">
         <ul>
-          <li class="has-dropdown">
-            <a href="#">Bienvenue</a>
-            <ul class="dropdown">
-              <li><a href="un-site-unique.html">Un site Unique</a></li>
-              <li><a href="la-piscine.html">La piscine</a></li>
-              <li><a href="reinventee.html">La Margottière réinventée</a></li>
-            </ul>
-          </li>
-          <li class="has-dropdown">
-            <a href="les-chambres.html">Les Chambres</a>
-            <ul class="dropdown">
-              <li><a href="chambre-1.html">Chambre 1</a></li>
-              <li><a href="chambre-2.html">Chambre 2</a></li>
-              <li><a href="chambre-3.html">Chambre 3</a></li>
-              <li><a href="chambre-4.html">Chambre 4</a></li>
-              <li><a href="les-tarifs.html">Les tarifs</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="animaux.html">Nature &amp; Animaux</a>
-          </li>
+          <li><a href="un-site-unique.html">Un site Unique</a></li>
+          <li><a href="la-piscine.html">La Piscine</a></li>
+          <li><a href="reinventee.html">Réinventée</a></li>
+          <li><a href="les-chambres.html">Les Chambres</a></li>
+          <li><a href="les-tarifs.html">Les Tarifs</a></li>
+          <li><a href="animaux.html">Nature &amp; Animaux</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero" style="background-image: url('images/site/accueil.jpg');">
+  <!-- EPIC HERO -->
+  <section class="hero epic-hero" style="background-image: url('images/site/accueil.jpg');">
+    <div class="hero-particles">
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span>
+    </div>
     <div class="hero-content">
-      <h1>Bienvenue à la Margottière</h1>
-      <p>Chambres d'Hôtes en Provence</p>
+      <p class="hero-eyebrow">Chambres d'Hôtes en Provence</p>
+      <h1>La Margottière</h1>
+      <p class="hero-tagline">Un havre de paix entre lavande et nature</p>
+      <a href="les-chambres.html" class="btn-hero">Découvrir nos chambres</a>
     </div>
     <div class="scroll-indicator">
       <span></span>
@@ -58,22 +49,22 @@
   </section>
 
   <!-- FEATURES -->
-  <section class="features fade-in">
-    <a href="les-chambres.html" class="feature-card">
+  <section class="features">
+    <a href="les-chambres.html" class="feature-card fade-in">
       <img src="images/chambres/thumb-ch1.jpg" alt="Nos Chambres" loading="lazy">
       <div class="feature-card-body">
         <h3>Nos Chambres</h3>
         <p>4 chambres d'hôtes avec entrées individuelles et accès piscine</p>
       </div>
     </a>
-    <a href="la-piscine.html" class="feature-card">
+    <a href="la-piscine.html" class="feature-card fade-in">
       <img src="images/piscine/piscine-1.jpg" alt="La Piscine" loading="lazy">
       <div class="feature-card-body">
         <h3>La Piscine</h3>
         <p>Piscine chauffée dans un écrin de verdure provençal</p>
       </div>
     </a>
-    <a href="animaux.html" class="feature-card">
+    <a href="animaux.html" class="feature-card fade-in">
       <img src="images/animaux/1.jpg" alt="Nature et Animaux" loading="lazy">
       <div class="feature-card-body">
         <h3>Nature &amp; Animaux</h3>
@@ -82,25 +73,81 @@
     </a>
   </section>
 
-  <!-- CONTENT -->
-  <main class="page-content">
-    <div class="container">
-      <div class="page-text fade-in">
-        <p>La Margottière est une chambre d'hôtes provençale dédiée à la nature et aux animaux où vous pourrez croiser chats, chiens et chevaux.</p>
-        <p>Située sur un terrain de plus d'un hectare, elle dispose de 4 chambres d'hôtes avec entrées individuelles sur une belle terrasse et accès à la piscine chauffée.</p>
-        <p>De l'autre côté de la maison ont pris place une écurie de deux box, une petite carrière de dressage, deux paddocks et un potager. Cette partie de la Margottière est privative, mais Isa et Titi se proposent d'étudier avec vous toute possibilité de séjourner ici avec votre cheval.</p>
+  <!-- PARALLAX STATS BAND -->
+  <section class="parallax-band" style="background-image: url('images/piscine/piscine-2.jpg');">
+    <div class="parallax-overlay"></div>
+    <div class="stats-grid">
+      <div class="stat-item fade-in">
+        <span class="stat-number"><span data-target="4">0</span></span>
+        <span class="stat-label">Chambres d'hôtes</span>
       </div>
-
-      <blockquote class="fade-in">
-        Il y aura toujours un chemin pour aller où tu veux !
-        <cite>-- Askatasun</cite>
-      </blockquote>
-
-      <div class="cta-wrapper fade-in">
-        <a href="tel:+33616925101" class="btn-cta">Réserver</a>
+      <div class="stat-item fade-in">
+        <span class="stat-number"><span data-target="1">0</span> ha</span>
+        <span class="stat-label">de terrain</span>
+      </div>
+      <div class="stat-item fade-in">
+        <span class="stat-number">Piscine</span>
+        <span class="stat-label">chauffée</span>
+      </div>
+      <div class="stat-item fade-in">
+        <span class="stat-number"><span data-target="365">0</span> j</span>
+        <span class="stat-label">de soleil par an</span>
       </div>
     </div>
-  </main>
+  </section>
+
+  <!-- WELCOME SECTION -->
+  <section class="welcome-section">
+    <div class="container">
+      <div class="section-divider fade-in">
+        <span class="divider-ornament"></span>
+      </div>
+      <h2 class="section-heading fade-in">Bienvenue chez nous</h2>
+      <div class="welcome-grid">
+        <div class="welcome-text fade-in">
+          <p>La Margottière est une chambre d'hôtes provençale dédiée à la nature et aux animaux où vous pourrez croiser chats, chiens et chevaux.</p>
+          <p>Située sur un terrain de plus d'un hectare, elle dispose de 4 chambres d'hôtes avec entrées individuelles sur une belle terrasse et accès à la piscine chauffée.</p>
+          <p>De l'autre côté de la maison ont pris place une écurie de deux box, une petite carrière de dressage, deux paddocks et un potager. Cette partie de la Margottière est privative, mais Isa et Titi se proposent d'étudier avec vous toute possibilité de séjourner ici avec votre cheval.</p>
+        </div>
+        <div class="welcome-image fade-in">
+          <img src="images/site/isa-titi.jpg" alt="Isa et Titi, vos hôtes" loading="lazy">
+          <span class="welcome-image-caption">Isa &amp; Titi, vos hôtes</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EPIC QUOTE -->
+  <section class="epic-quote" style="background-image: url('images/site/unique-5.jpg');">
+    <div class="epic-quote-overlay"></div>
+    <div class="epic-quote-content fade-in">
+      <blockquote>
+        Il y aura toujours un chemin pour aller où tu veux !
+      </blockquote>
+      <cite>-- Askatasun</cite>
+    </div>
+  </section>
+
+  <!-- CONTACT BANNER -->
+  <section class="epic-cta fade-in">
+    <div class="container">
+      <h2>Envie de découvrir la Margottière ?</h2>
+      <div class="epic-contact-info">
+        <div class="epic-contact-item">
+          <span class="epic-contact-label">Téléphone</span>
+          <a href="tel:+33616925101">+33(0)6 16 92 51 01</a>
+        </div>
+        <div class="epic-contact-item">
+          <span class="epic-contact-label">Email</span>
+          <a href="mailto:contact@lamargottiererians.com">contact@lamargottiererians.com</a>
+        </div>
+        <div class="epic-contact-item">
+          <span class="epic-contact-label">Adresse</span>
+          <span>141 Chemin du Passet, 83560 RIANS</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- FOOTER -->
   <footer class="site-footer">
