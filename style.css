@@ -155,13 +155,15 @@ h3 { font-size: 1.6rem; }
 }
 
 .header-inner {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 72px;
+  /* Plancher, pas plafond : si le contenu dépasse, l'en-tête grandit
+     au lieu de déborder sur le bandeau. */
+  min-height: 72px;
 }
 
 /* --- Site Logo --- */
@@ -191,7 +193,7 @@ h3 { font-size: 1.6rem; }
   font-size: 0.65rem;
   font-weight: 400;
   font-style: italic;
-  color: var(--text-light);
+  color: var(--text-medium);
   letter-spacing: 1.2px;
   text-transform: uppercase;
   margin-top: 1px;
@@ -247,13 +249,16 @@ h3 { font-size: 1.6rem; }
 
 .main-nav > ul > li > a {
   display: block;
-  padding: 24px 12px;
+  padding: 24px 10px;
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--text-dark);
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  /* Un libellé de menu tient sur une ligne, sinon c'est le menu
+     déroulant qui prend le relais (voir le point de rupture). */
+  white-space: nowrap;
   transition: color var(--transition), background var(--transition);
 }
 
@@ -464,7 +469,7 @@ h3 { font-size: 1.6rem; }
 
 .feature-card-body p {
   font-size: 0.95rem;
-  color: var(--text-light);
+  color: var(--text-medium);
   line-height: 1.5;
 }
 
@@ -575,7 +580,7 @@ h3 { font-size: 1.6rem; }
 }
 
 .page-title h2 {
-  color: var(--text-light);
+  color: var(--text-medium);
   font-weight: 400;
   font-style: italic;
   font-size: 1.3rem;
@@ -611,7 +616,7 @@ h3 { font-size: 1.6rem; }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
-  align-items: start;
+  align-items: center;
   margin: 40px 0;
 }
 
@@ -852,7 +857,7 @@ blockquote cite {
 
 .chamber-card-body p {
   font-size: 0.9rem;
-  color: var(--text-light);
+  color: var(--text-medium);
   line-height: 1.6;
   margin-bottom: 12px;
 }
@@ -935,7 +940,7 @@ blockquote cite {
   margin-top: 14px;
   font-family: 'Playfair Display', serif;
   font-size: 1rem;
-  color: var(--text-light);
+  color: var(--text-medium);
 }
 
 /* Slideshow thumbnails strip */
@@ -1509,7 +1514,10 @@ blockquote cite {
   }
 }
 
-@media (max-width: 768px) {
+/* Le menu déroulant prend le relais à 1180 px et non 768 : entre les deux,
+   les sept libellés ne tiennent pas sur une ligne et l'en-tête déborde.
+   Le seuil est passé de 1024 à 1180 quand l'onglet Bienvenue s'est ajouté. */
+@media (max-width: 1180px) {
   /* Hamburger visible */
   .menu-toggle {
     display: flex;
@@ -1607,4 +1615,163 @@ blockquote cite {
   .logo-sub {
     font-size: 0.5rem;
   }
+}
+
+
+/* ============================================
+   IMPRESSION & MOUVEMENT RÉDUIT
+   ============================================
+   .fade-in part à opacity:0 et n'est révélé qu'au défilement. À l'impression
+   rien ne défile : sans ce garde-fou la page sort vide. Pire ici, les
+   compteurs [data-target] affichent littéralement « 0 » tant que
+   l'observateur ne s'est pas déclenché — soit « 0 chambres d'hôtes » sur un
+   site de réservation. */
+@media print {
+  .fade-in { opacity: 1 !important; transform: none !important; }
+  .hero-particles, .scroll-indicator { display: none !important; }
+  .site-header { position: static !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in { opacity: 1 !important; transform: none !important; transition: none !important; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* ============================================
+   GALERIE MONDRIAN
+   Les lignes noires sont des pistes de grille dédiées,
+   d'épaisseurs inégales : des filets de 5px, des barres de 16px.
+   Aucun padding : la composition va jusqu'à son propre bord.
+   ============================================ */
+.mondrian {
+  display: grid;
+  background: #211E1A;
+  gap: 0;
+  margin: 56px 0;
+}
+.mondrian--unique {
+  grid-template-columns: 1.5fr 14px 3.2fr 5px 2.4fr 16px 1.7fr 6px 2.2fr;
+  grid-template-rows: 2.3fr 12px 1.5fr 5px 2.1fr 15px 2fr 6px 2.4fr 11px 1.6fr;
+  aspect-ratio: 11 / 11.9;
+}
+.mondrian--animaux {
+  grid-template-columns: 1.5fr 14px 3.2fr 5px 2.4fr 16px 1.7fr 6px 2.2fr;
+  grid-template-rows: 2.4fr 13px 1.6fr 5px 2.2fr 15px 1.8fr;
+  aspect-ratio: 11 / 8;
+}
+.mondrian--piscine {
+  grid-template-columns: 3.4fr 14px 2fr 6px 2.6fr 12px 3fr;
+  grid-template-rows: 2.6fr 15px 1.5fr 6px 2fr;
+  aspect-ratio: 11 / 6.1;
+}
+
+.mondrian .gallery-item,
+.mondrian .bloc {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+.mondrian .gallery-item {
+  background: var(--warm-white);
+  cursor: zoom-in;
+  transition: opacity var(--transition);
+}
+.mondrian .gallery-item::after { content: none; }
+.mondrian .gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.mondrian .gallery-item:hover img,
+.mondrian .gallery-item:focus-visible img { transform: scale(1.06); }
+.mondrian .gallery-item:focus-visible {
+  outline: 3px solid var(--sunflower);
+  outline-offset: -3px;
+  z-index: 2;
+}
+
+/* Sous 860px la composition n'est pas abandonnée mais redessinée : deux colonnes
+   inégales, des cases qui s'étirent, et les aplats conservés. Le damier de carrés
+   forcés qui tenait lieu de version mobile amputait les panoramas et les verticales.
+   Les grid-area sont en !important : ils écrasent ceux, posés en style inline,
+   de la composition de bureau. */
+@media (max-width: 860px) {
+  .mondrian { grid-template-columns: 1.15fr 8px 1fr; margin: 32px 0; }
+  .mondrian > * { aspect-ratio: auto !important; }
+
+  .mondrian--unique {
+    grid-template-rows: 1.43fr 8px 1.7fr 6px 0.86fr 10px 1.43fr 6px 0.86fr 7px 0.4fr 6px 1.55fr 10px 1.43fr 6px 0.86fr 8px 1.43fr 6px 0.86fr 10px 1.55fr;
+    aspect-ratio: 2.15 / 14.36;
+  }
+  .mondrian--unique > button:nth-of-type(1)  { grid-area: 1/1/2/4  !important; }
+  .mondrian--unique > button:nth-of-type(2)  { grid-area: 3/1/4/2  !important; }
+  .mondrian--unique > button:nth-of-type(5)  { grid-area: 3/3/4/4  !important; }
+  .mondrian--unique > button:nth-of-type(3)  { grid-area: 5/1/6/2  !important; }
+  .mondrian--unique > button:nth-of-type(4)  { grid-area: 5/3/6/4  !important; }
+  .mondrian--unique > button:nth-of-type(6)  { grid-area: 7/1/8/4  !important; }
+  .mondrian--unique > button:nth-of-type(7)  { grid-area: 9/1/10/2 !important; }
+  .mondrian--unique > button:nth-of-type(8)  { grid-area: 9/3/10/4 !important; }
+  .mondrian--unique > div:nth-of-type(1)     { grid-area: 11/1/12/2 !important; }
+  .mondrian--unique > div:nth-of-type(2)     { grid-area: 11/3/12/4 !important; }
+  .mondrian--unique > button:nth-of-type(9)  { grid-area: 13/1/14/2 !important; }
+  .mondrian--unique > button:nth-of-type(13) { grid-area: 13/3/14/4 !important; }
+  .mondrian--unique > button:nth-of-type(10) { grid-area: 15/1/16/4 !important; }
+  .mondrian--unique > button:nth-of-type(11) { grid-area: 17/1/18/2 !important; }
+  .mondrian--unique > button:nth-of-type(12) { grid-area: 17/3/18/4 !important; }
+  .mondrian--unique > button:nth-of-type(14) { grid-area: 19/1/20/4 !important; }
+  .mondrian--unique > button:nth-of-type(15) { grid-area: 21/1/22/2 !important; }
+  .mondrian--unique > div:nth-of-type(3)     { grid-area: 21/3/22/4 !important; }
+  .mondrian--unique > button:nth-of-type(16) { grid-area: 23/1/24/2 !important; }
+  .mondrian--unique > div:nth-of-type(4)     { grid-area: 23/3/24/4 !important; }
+
+  .mondrian--animaux {
+    grid-template-rows: 1.5fr 7px 1.1fr 6px 1.1fr 10px 0.7fr 6px 1.4fr 7px 1.3fr 6px 1.3fr 10px 0.9fr 6px 1.2fr;
+    aspect-ratio: 2.15 / 10.5;
+  }
+  .mondrian--animaux > button:nth-of-type(1)  { grid-area: 1/1/2/4   !important; }
+  .mondrian--animaux > button:nth-of-type(2)  { grid-area: 3/1/8/2   !important; }
+  .mondrian--animaux > button:nth-of-type(3)  { grid-area: 3/3/4/4   !important; }
+  .mondrian--animaux > button:nth-of-type(4)  { grid-area: 5/3/6/4   !important; }
+  .mondrian--animaux > div:nth-of-type(1)     { grid-area: 7/3/8/4   !important; }
+  .mondrian--animaux > button:nth-of-type(5)  { grid-area: 9/1/10/4  !important; }
+  .mondrian--animaux > button:nth-of-type(6)  { grid-area: 11/1/12/2 !important; }
+  .mondrian--animaux > button:nth-of-type(9)  { grid-area: 11/3/14/4 !important; }
+  .mondrian--animaux > button:nth-of-type(7)  { grid-area: 13/1/14/2 !important; }
+  .mondrian--animaux > button:nth-of-type(8)  { grid-area: 15/1/16/2 !important; }
+  .mondrian--animaux > div:nth-of-type(2)     { grid-area: 15/3/16/4 !important; }
+  .mondrian--animaux > button:nth-of-type(10) { grid-area: 17/1/18/2 !important; }
+  .mondrian--animaux > div:nth-of-type(3)     { grid-area: 17/3/18/4 !important; }
+  .mondrian--animaux > div:nth-of-type(4)     { display: none; }
+
+  .mondrian--piscine {
+    grid-template-rows: 1.5fr 8px 1.35fr 6px 0.5fr 10px 1.35fr 6px 0.95fr;
+    aspect-ratio: 2.15 / 5.65;
+  }
+  .mondrian--piscine > button:nth-of-type(1) { grid-area: 1/1/2/4  !important; }
+  .mondrian--piscine > button:nth-of-type(2) { grid-area: 3/1/4/4  !important; }
+  .mondrian--piscine > div:nth-of-type(1)    { grid-area: 5/1/6/2  !important; }
+  .mondrian--piscine > div:nth-of-type(2)    { grid-area: 5/3/6/4  !important; }
+  .mondrian--piscine > button:nth-of-type(3) { grid-area: 7/1/8/4  !important; }
+  .mondrian--piscine > button:nth-of-type(4) { grid-area: 9/1/10/2 !important; }
+  .mondrian--piscine > button:nth-of-type(5) { grid-area: 9/3/10/4 !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mondrian .gallery-item img { transition: none; }
+  .mondrian .gallery-item:hover img { transform: none; }
 }

@@ -19,7 +19,7 @@
     var navLinks = mainNav.querySelectorAll('a');
     navLinks.forEach(function(link) {
       link.addEventListener('click', function() {
-        if (window.innerWidth <= 768) {
+        if (window.innerWidth <= 1024) {
           mainNav.classList.remove('open');
           menuToggle.classList.remove('active');
         }
