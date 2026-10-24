@@ -1016,16 +1016,118 @@ blockquote cite {
 /* ============================================
    TARIFS IMAGE
    ============================================ */
-.tarifs-image {
-  text-align: center;
-  margin: 30px auto;
+/* Grille tarifaire (tableau HTML, remplace l'ancienne image) */
+.tarifs {
+  max-width: 760px;
+  margin: 30px auto 40px;
+  overflow-x: auto;
 }
 
-.tarifs-image img {
-  max-width: 700px;
-  margin: 0 auto;
+.tarifs-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--warm-white);
   border-radius: var(--radius);
+  overflow: hidden;
   box-shadow: 0 4px 20px var(--shadow);
+  font-variant-numeric: tabular-nums;
+}
+
+.tarifs-table caption {
+  caption-side: top;
+  padding-bottom: 14px;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--text-medium);
+}
+
+.tarifs-table th,
+.tarifs-table td {
+  padding: 12px 10px;
+  text-align: center;
+  border-bottom: 1px solid var(--cream-dark);
+}
+
+.tarifs-table thead th {
+  background: var(--lavender);
+  color: #fff;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.tarifs-table thead tr + tr th {
+  background: var(--lavender-light);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.tarifs-periode {
+  display: block;
+  font-weight: 400;
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+
+.tarifs-table tbody th {
+  text-align: left;
+  font-weight: 600;
+  white-space: nowrap;
+  border-left: 6px solid transparent;
+}
+
+.tarifs-table tbody th a { color: var(--text-dark); }
+.tarifs-table tbody th a:hover { color: var(--lavender-deep); }
+
+/* Couleur de chaque chambre, reprise de sa décoration */
+.tarifs-table .tarifs-ch1 th { border-left-color: #E3A6C0; }
+.tarifs-table .tarifs-ch2 th { border-left-color: #A9C98A; }
+.tarifs-table .tarifs-ch3 th { border-left-color: #8FB2DA; }
+.tarifs-table .tarifs-ch4 th { border-left-color: #C9AE8E; }
+
+.tarifs-table tbody tr:last-child th,
+.tarifs-table tbody tr:last-child td { border-bottom: none; }
+
+.tarifs-notes {
+  list-style: none;
+  margin: 24px auto 0;
+  padding: 0;
+  text-align: center;
+  color: var(--text-medium);
+}
+
+.tarifs-notes li { margin-bottom: 4px; }
+
+@media (max-width: 640px) {
+  .tarifs-table th,
+  .tarifs-table td { padding: 8px 3px; font-size: 0.8rem; }
+  .tarifs-table tbody th { border-left-width: 4px; padding-left: 6px; }
+  .tarifs-table caption { font-size: 1rem; }
+  .tarifs-periode { font-size: 0.68rem; }
+}
+
+/* Règlement de la piscine */
+.reglement {
+  max-width: 800px;
+  margin: 50px auto 20px;
+  color: var(--text-medium);
+  font-size: 1.05rem;
+}
+
+.reglement h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.reglement ol {
+  margin: 16px 0 20px 1.4rem;
+}
+
+.reglement li { margin-bottom: 8px; }
+
+.reglement-responsabilite {
+  text-align: center;
+  color: var(--terracotta);
 }
 
 /* ============================================
